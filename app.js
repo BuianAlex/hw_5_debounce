@@ -1,9 +1,10 @@
 import { data } from "./testData";
 const resWrap = document.querySelector("#result-list");
+const matching = document.querySelector(".calc-matching");
 
 function showResult(text) {
   resWrap.innerHTML = "";
-
+  matching.textContent = 0;
   if (text !== " " && text.length !== 0) {
     let res = data.features.filter(item => {
       const fdata = item.info.search(text);
@@ -11,6 +12,7 @@ function showResult(text) {
         return item;
       }
     });
+    matching.textContent = res.length;
     res.map(item => {
       const resItem = document.createElement("li");
       resItem.textContent = item.info;
@@ -30,7 +32,7 @@ const debounce = (func, delay) => {
 };
 
 document.querySelector("input").addEventListener(
-  "keyup",
+  "input",
   debounce(function() {
     showResult(this.value);
   }, 1500)

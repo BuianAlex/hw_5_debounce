@@ -1,5 +1,12 @@
 @import "@material/textfield/mdc-text-field";
 .mdc-text-field {
-  width: 30%;
+  max-width: 500px;
   margin: 0 auto;
+}
+.calc-matching {
+  position: absolute;
+  z-index: 200;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
 }
